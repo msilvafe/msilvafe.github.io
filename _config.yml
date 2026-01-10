@@ -18,11 +18,11 @@ impressum_path: # set to path to include impressum link in the footer, use the s
 back_to_top: true # set to false to disable the back to top button
 
 # --- Social / academic links ---
-github_username: msilvafe
-scholar_userid: seGEqrkAAAAJ
-orcid_id: 0000-0001-7480-4341 # optional
-x_username: msilvafe # optional
-linkedin_username: max-silva-feaver-50688348 # optional
+# github_username: msilvafe
+# scholar_userid: seGEqrkAAAAJ
+# orcid_id: 0000-0001-7480-4341 # optional
+# x_username: msilvafeaver # optional
+# linkedin_username: max-silva-feaver-50688348 # optional
 
 # --- UI ---
 enable_darkmode: true
@@ -403,7 +403,7 @@ enable_bing_verification: false # enables bing site verification
 enable_masonry: true # enables automatic project cards arrangement
 enable_math: true # enables math typesetting (uses MathJax)
 enable_tooltips: false # enables automatic tooltip links generated for each section titles on pages and posts
-enable_navbar_social: false # enables displaying social links in the navbar on the about page
+enable_navbar_social: true # enables displaying social links in the navbar on the about page
 enable_project_categories: true # enables categorization of projects into multiple categories
 enable_medium_zoom: true # enables image zoom feature (as on medium.com)
 enable_progressbar: true # enables a horizontal progress bar linked to the vertical scroll position
