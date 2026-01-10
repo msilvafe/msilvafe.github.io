@@ -12,7 +12,7 @@ Answering these questions requires both theoretical ideas and carefully designed
 I approach this problem through two complementary research directions: **dark matter detection** and **cosmology**. While these fields use different tools, they are united by a common goal: uncovering the fundamental physics that shaped the universe we observe today.
 
 <figure>
-  <img src="assets/img/research/overview_cosmic_timeline.jpg" alt="Cosmic timeline showing dark matter and the cosmic microwave background">
+  <img src="/assets/img/research/overview_cosmic_timeline.jpg" alt="Cosmic timeline showing dark matter and the cosmic microwave background">
   <figcaption>
     <strong>The cosmic timeline.</strong> Observations of dark matter and the cosmic microwave background allow us to probe both the contents of the universe and its earliest moments.
   </figcaption>
@@ -27,7 +27,7 @@ Astronomical observations show that most of the matter in the universe is invisi
 Despite decades of study, the particle nature of dark matter remains unknown. Identifying what dark matter is made of is one of the most important open problems in modern physics.
 
 <figure>
-  <img src="assets/img/research/dark_matter_evidence.jpg" alt="Evidence for dark matter from galaxy rotation curves or gravitational lensing">
+  <img src="/assets/img/research/dark_matter_evidence.jpg" alt="Evidence for dark matter from galaxy rotation curves or gravitational lensing">
   <figcaption>
     <strong>Evidence for dark matter.</strong> The motion of galaxies and the bending of light by massive structures reveal the presence of unseen matter.
   </figcaption>
@@ -40,7 +40,7 @@ One particularly compelling dark matter candidate is the **axion**, a hypothetic
 Axions would be extremely light, electrically neutral, and interact only very weakly with ordinary matter. These properties make them difficult to detect, but also mean they could naturally account for all of the dark matter in the universe. Because axions are motivated by well-established theory and cosmological arguments, they are a major focus of experimental searches worldwide.
 
 <figure>
-  <img src="assets/img/research/axion_schematic.jpg" alt="Schematic illustrating axion dark matter and axion–photon conversion">
+  <img src="/assets/img/research/axion_schematic.jpg" alt="Schematic illustrating axion dark matter and axion–photon conversion">
   <figcaption>
     <strong>Axion dark matter.</strong> In strong magnetic fields, axions can convert into microwave photons, enabling experimental searches.
   </figcaption>
@@ -53,7 +53,7 @@ The HAYSTAC experiment searches for axion dark matter using a technique known as
 Detecting this signal requires extraordinary sensitivity, since the expected power is far smaller than everyday electronic noise. HAYSTAC has pioneered advanced measurement techniques that push beyond traditional quantum limits, enabling world-leading sensitivity across several axion mass ranges.
 
 <figure>
-  <img src="assets/img/research/haystac_setup.jpg" alt="HAYSTAC axion haloscope cavity and magnet system">
+  <img src="/assets/img/research/haystac_setup.jpg" alt="HAYSTAC axion haloscope cavity and magnet system">
   <figcaption>
     <strong>The HAYSTAC experiment.</strong> A resonant microwave cavity operated in a strong magnetic field to search for axion dark matter.
   </figcaption>
@@ -66,7 +66,7 @@ As axion searches move to higher masses, traditional microwave cavities become s
 In ALPHA, the resonant frequency is set by the effective properties of the structure rather than its physical size. This approach opens the door to searching for axions at much higher masses than previously accessible, allowing experimental tests of well-motivated theoretical models that were out of reach until recently.
 
 <figure>
-  <img src="assets/img/research/alpha_plasma_haloscope.jpg" alt="Plasma haloscope or metamaterial wire array schematic">
+  <img src="/assets/img/research/alpha_plasma_haloscope.jpg" alt="Plasma haloscope or metamaterial wire array schematic">
   <figcaption>
     <strong>The ALPHA plasma haloscope.</strong> Metamaterial structures enable axion searches at higher frequencies without shrinking detector volume.
   </figcaption>
@@ -81,7 +81,7 @@ Cosmology is the study of the universe as a whole: its origin, composition, evol
 Many of the most important clues about the early universe are encoded in extremely faint signals that require highly sensitive instruments to detect.
 
 <figure>
-  <img src="assets/img/research/cosmology_overview.jpg" alt="Large-scale structure of the universe">
+  <img src="/assets/img/research/cosmology_overview.jpg" alt="Large-scale structure of the universe">
   <figcaption>
     <strong>Large-scale structure.</strong> The distribution of matter across the universe encodes information about its origin and evolution.
   </figcaption>
@@ -94,7 +94,7 @@ The **cosmic microwave background (CMB)** is the oldest light we can observe. It
 Tiny variations in the temperature and polarization of the CMB provide a detailed snapshot of the early universe. By studying these patterns, we can measure the universe’s composition, geometry, and initial conditions with remarkable precision.
 
 <figure>
-  <img src="assets/img/research/cmb_map.jpg" alt="Cosmic microwave background temperature or polarization map">
+  <img src="/assets/img/research/cmb_map.jpg" alt="Cosmic microwave background temperature or polarization map">
   <figcaption>
     <strong>The cosmic microwave background.</strong> Small fluctuations in this ancient light reveal conditions in the early universe.
   </figcaption>
@@ -107,7 +107,7 @@ One of the most successful theories of the early universe is **cosmic inflation*
 Although inflation successfully explains many observations, the physical mechanism behind it remains unknown. Testing inflation experimentally is therefore a major goal of modern cosmology.
 
 <figure>
-  <img src="assets/img/research/inflation_timeline.jpg" alt="Timeline illustrating cosmic inflation">
+  <img src="/assets/img/research/inflation_timeline.jpg" alt="Timeline illustrating cosmic inflation">
   <figcaption>
     <strong>Cosmic inflation.</strong> A brief period of rapid expansion can explain the uniformity and structure of the universe.
   </figcaption>
@@ -120,7 +120,7 @@ A particularly important target in CMB studies is a subtle pattern in the polari
 Detecting primordial B-modes would provide direct evidence that inflation occurred and would allow us to probe physics at energy scales far beyond those accessible in laboratory experiments. Because the signal is extremely faint, measuring B-modes requires both exquisite detector sensitivity and careful control of instrumental effects.
 
 <figure>
-  <img src="assets/img/research/bmode_polarization.jpg" alt="Illustration of E-mode and B-mode polarization patterns">
+  <img src="/assets/img/research/bmode_polarization.jpg" alt="Illustration of E-mode and B-mode polarization patterns">
   <figcaption>
     <strong>CMB polarization.</strong> B-mode patterns may carry signatures of primordial gravitational waves.
   </figcaption>
@@ -133,14 +133,8 @@ The Simons Observatory is a next-generation experiment designed to make some of 
 By improving sensitivity and controlling systematic effects, the Simons Observatory aims to test models of inflation, constrain the properties of dark matter and neutrinos, and refine our understanding of the universe’s fundamental parameters.
 
 <figure>
-  <img src="assets/img/research/simons_observatory_site.png" alt="Simons Observatory telescopes in the Atacama Desert">
+  <img src="/assets/img/research/simons_observatory_site.png" alt="Simons Observatory telescopes in the Atacama Desert">
   <figcaption>
     <strong>The Simons Observatory.</strong> A next-generation CMB experiment in the Atacama Desert of Chile.
   </figcaption>
 </figure>
-
----
-
-## A Unified Approach
-
-Although dark matter experiments and cosmological observations may seem very different, they are deeply connected. Both seek to uncover fundamental physics that shaped the universe, and both rely on precision measurements at the limits of technology. By working across these fields, I aim to build experiments that not only push sensitivity forward, but also provide robust, interpretable answers to some of the most basic questions we can ask about the universe.
