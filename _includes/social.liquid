@@ -3,13 +3,17 @@
     {% when 'acm_id' %}
       <a href="https://dl.acm.org/profile/{{ social[1] }}/" title="ACM DL"><i class="ai ai-acm"></i></a>
     {% when 'arxiv_author' %}
-      <a href="https://arxiv.org/search/?searchtype=author&query={{ social[1] | uri_escape }}"
-        title="arXiv">
+      <a
+        href="https://arxiv.org/search/?searchtype=author&query={{ social[1] | uri_escape }}"
+        title="arXiv"
+      >
         <i class="ai ai-arxiv"></i>
       </a>
     {% when 'ads_author' %}
-      <a href="https://ui.adsabs.harvard.edu/search/q=author%3A%22{{ social[1] | uri_escape }}%22"
-        title="NASA ADS">
+      <a
+        href="https://ui.adsabs.harvard.edu/search/q=author%3A%22{{ social[1] | uri_escape }}%22"
+        title="NASA ADS"
+      >
         <i class="ai ai-ads"></i>
       </a>
     {% when 'blogger_url' %}

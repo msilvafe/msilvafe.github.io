@@ -2,11 +2,11 @@ name: Update contribution stats
 
 on:
   schedule:
-    - cron: "17 6 * * *"  # daily at 06:17 UTC
+    - cron: "17 6 * * *" # daily at 06:17 UTC
   workflow_dispatch: {}
 
 permissions:
-  contents: write  # needed to commit/push changes :contentReference[oaicite:2]{index=2}
+  contents: write # needed to commit/push changes :contentReference[oaicite:2]{index=2}
 
 jobs:
   update:

@@ -9,12 +9,14 @@ description: A curated list of the public GitHub repositories that I actively co
 ## GitHub Repositories
 
 ### [so_data_exploration](https://github.com/msilvafe/so_data_exploration)
-**Description:** My personal scripts for parsing and visualizing SO (Simons Observatory) data products.  
+
+**Description:** My personal scripts for parsing and visualizing SO (Simons Observatory) data products.
 
 ---
 
 ### [Simons-NSBP-Tutorial](https://github.com/msilvafe/Simons-NSBP-Tutorial)
-**Description:** This is just a trial tutorial for folks to learn about basic GitHub and git operations.  
+
+**Description:** This is just a trial tutorial for folks to learn about basic GitHub and git operations.
 
 ---
 
@@ -23,14 +25,15 @@ description: A curated list of the public GitHub repositories that I actively co
 {% assign user = site.data.contributed_repos.user %}
 
 {% for item in site.data.contributed_repos.repos %}
-  {% assign repo = item.full_name %}
-  {% assign s = site.data.contrib_stats.stats[repo] %}
+{% assign repo = item.full_name %}
+{% assign s = site.data.contrib_stats.stats[repo] %}
 
 ### [{{ repo }}](https://github.com/{{ repo }})
 
 **Description:** {{ item.description }}
 
 **My contribution statistics:**
+
 - PRs opened: {{ s.prs_opened | default: "—" }}
 - Issues opened: {{ s.issues_opened | default: "—" }}
 - Reviews: {{ s.reviews | default: "—" }}
