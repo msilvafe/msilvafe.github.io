@@ -11,7 +11,6 @@ description: >-
   Experimental cosmology and particle physics: axion dark matter detection (HAYSTAC, ALPHA) and
   CMB instrumentation & analysis (Simons Observatory).
 keywords: ["physics", "cosmology", "astrophysics", "dark matter", "CMB", "instrumentation", "data analysis", "HAYSTAC", "ALPHA", "Simons Observatory"]
-
 url: https://msilvafe.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
 last_updated: false # set to true if you want to display last updated in the footer
@@ -21,8 +20,8 @@ back_to_top: true # set to false to disable the back to top button
 # --- Social / academic links ---
 github_username: msilvafe
 scholar_userid: seGEqrkAAAAJ
-orcid_id: "0000-0001-7480-4341"          # optional
-twitter_username: "msilvafe"  # optional
+orcid_id: "0000-0001-7480-4341" # optional
+twitter_username: "msilvafe" # optional
 linkedin_username: "" # optional
 
 # --- UI ---
