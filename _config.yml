@@ -69,7 +69,6 @@ rss_icon: true
 # Layout
 # -----------------------------------------------------------------------------
 
-navbar_fixed: true
 footer_fixed: true
 search_enabled: true
 socials_in_search: true
