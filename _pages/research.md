@@ -13,6 +13,7 @@ My research sits at the intersection of **particle physics and cosmology**, comb
 I play leading roles in the **HAYSTAC** and **ALPHA** collaborations, developing and operating resonant detectors that probe well-motivated QCD axion parameter space. My work emphasizes experiment-level performance—receiver stability, system integration, and end-to-end analysis readiness—so that hardware advances translate into discovery sensitivity.
 
 ### R&D direction at UCR: two concrete programs
+
 **1) Excess cavity noise & thermalization.** I lead systematic studies of cavity internal thermalization and design choices that produce noise above the expected physical temperature, with the goal of establishing experimentally grounded design rules for low-noise high-frequency haloscopes.
 
 **2) Bolometric axion detection.** I am developing bolometric readout as a practical path between quantum-limited linear amplifiers and single-photon detection, aiming for large scan-rate enhancements at high frequency where parametric amplifiers become challenging to scale.

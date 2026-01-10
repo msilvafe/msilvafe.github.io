@@ -14,10 +14,10 @@ For my wedding party, I decided to make a set of gift boxes using the research s
 
 Even for a small project, the workflow felt familiar:
 
-- **Requirements:** size constraints, what needs to fit, and what should be visible when opened  
-- **Materials:** balancing appearance, machinability, and finish  
-- **Tolerances:** making parts that actually mate cleanly (especially lids and inserts)  
-- **Iteration:** prototype one, learn what matters, then build the set  
+- **Requirements:** size constraints, what needs to fit, and what should be visible when opened
+- **Materials:** balancing appearance, machinability, and finish
+- **Tolerances:** making parts that actually mate cleanly (especially lids and inserts)
+- **Iteration:** prototype one, learn what matters, then build the set
 - **Documentation:** so every box comes out consistent
 
 ## What I built
@@ -26,6 +26,6 @@ The final design used a simple geometry with a focus on clean edges and repeatab
 
 ## Why I like projects like this
 
-These builds are a fun reminder that experimental physics is as much about *craft* as it is about equations: translating a concept into a reliable object, learning what fails, and improving the design until it’s robust.
+These builds are a fun reminder that experimental physics is as much about _craft_ as it is about equations: translating a concept into a reliable object, learning what fails, and improving the design until it’s robust.
 
 (Photos and build notes coming soon.)
