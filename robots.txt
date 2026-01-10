@@ -1,1 +1,1 @@
-User-agent: * Disallow: Sitemap: https://msilvafe.github.io/sitemap.xml
+User-agent: * Disallow: Sitemap: https://msilvafe-cmb.com/sitemap.xml

@@ -58,13 +58,6 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "";
               },
-            },{id: "dropdown-blog",
-              title: "blog",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/blog/";
-              },
             },{id: "news-a-simple-inline-announcement",
           title: 'A simple inline announcement.',
           description: "",
@@ -101,14 +94,35 @@ ninja.data = [{
         title: 'email',
         section: 'Socials',
         handler: () => {
-          window.open("mailto:%79%6F%75@%65%78%61%6D%70%6C%65.%63%6F%6D", "_blank");
+          window.open("mailto:%6D%61%78%69%6D%69%6C%69%61%6E%6F.%73%69%6C%76%61-%66%65%61%76%65%72@%79%61%6C%65.%65%64%75", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'GitHub',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/msilvafe", "_blank");
         },
       },{
         id: 'social-inspire',
         title: 'Inspire HEP',
         section: 'Socials',
         handler: () => {
-          window.open("https://inspirehep.net/authors/1010907", "_blank");
+          window.open("https://inspirehep.net/authors/1631263", "_blank");
+        },
+      },{
+        id: 'social-linkedin',
+        title: 'LinkedIn',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.linkedin.com/in/max-silva-feaver-50688348", "_blank");
+        },
+      },{
+        id: 'social-orcid',
+        title: 'ORCID',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://orcid.org/0000-0001-7480-4341", "_blank");
         },
       },{
         id: 'social-rss',
@@ -122,14 +136,56 @@ ninja.data = [{
         title: 'Google Scholar',
         section: 'Socials',
         handler: () => {
-          window.open("https://scholar.google.com/citations?user=qc6CJjYAAAAJ", "_blank");
+          window.open("https://scholar.google.com/citations?user=seGEqrkAAAAJ", "_blank");
         },
       },{
-        id: 'social-custom_social',
-        title: 'Custom_social',
+        id: 'social-x',
+        title: 'X',
         section: 'Socials',
         handler: () => {
-          window.open("https://www.alberteinstein.com/", "_blank");
+          window.open("https://twitter.com/msilvafe", "_blank");
+        },
+      },{
+        id: 'social-github',
+        title: 'Github',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://github.com/msilvafe", "_blank");
+        },
+      },{
+        id: 'social-twitter',
+        title: 'Twitter',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://x.com/msilvafe", "_blank");
+        },
+      },{
+        id: 'social-linkedin',
+        title: 'Linkedin',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.linkedin.com/in/max-silva-feaver-50688348", "_blank");
+        },
+      },{
+        id: 'social-orcid',
+        title: 'Orcid',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://orcid.org/0000-0001-7480-4341", "_blank");
+        },
+      },{
+        id: 'social-scholar',
+        title: 'Scholar',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://scholar.google.com/citations?user=seGEqrkAAAAJ", "_blank");
+        },
+      },{
+        id: 'social-inspirehep',
+        title: 'Inspirehep',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://inspirehep.net/authors/1631263", "_blank");
         },
       },{
       id: 'light-theme',
