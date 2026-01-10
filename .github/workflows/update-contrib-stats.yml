@@ -1,0 +1,36 @@
+name: Update contribution stats
+
+on:
+  schedule:
+    - cron: "17 6 * * *"  # daily at 06:17 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write  # needed to commit/push changes :contentReference[oaicite:2]{index=2}
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate contrib stats
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python tools/gen_contrib_stats.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _data/contrib_stats.yml
+          git diff --cached --quiet || git commit -m "Update contribution stats"
+          git push
