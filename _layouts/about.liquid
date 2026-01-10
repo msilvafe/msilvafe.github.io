@@ -32,6 +32,10 @@ layout: default
             cache_bust=true
           %}
         {% endif %}
+        {%- comment -%} Social icons under the profile photo {%- endcomment -%}
+        <div class="profile-socials">
+          {% include social.liquid %}
+        </div>
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
         {% endif %}

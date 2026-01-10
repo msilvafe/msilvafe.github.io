@@ -1,47 +1,38 @@
 ---
 layout: page
+title: Repositories
 permalink: /repositories/
-title: repositories
-description: Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories.
 nav: true
-nav_order: 4
+description: A curated list of the public GitHub repositories that I actively contribute to. I also contribute to and maintain a number of private repositories for the HAYSTAC and ALPHA collaborations.
 ---
-
-{% if site.data.repositories.github_users %}
-
-## GitHub users
-
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for user in site.data.repositories.github_users %}
-    {% include repository/repo_user.liquid username=user %}
-  {% endfor %}
-</div>
-
----
-
-{% if site.repo_trophies.enabled %}
-{% for user in site.data.repositories.github_users %}
-{% if site.data.repositories.github_users.size > 1 %}
-
-  <h4>{{ user }}</h4>
-  {% endif %}
-  <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% include repository/repo_trophies.liquid username=user %}
-  </div>
-
----
-
-{% endfor %}
-{% endif %}
-{% endif %}
-
-{% if site.data.repositories.github_repos %}
 
 ## GitHub Repositories
 
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for repo in site.data.repositories.github_repos %}
-    {% include repository/repo.liquid repository=repo %}
-  {% endfor %}
-</div>
-{% endif %}
+### [so_data_exploration](https://github.com/msilvafe/so_data_exploration)
+**Description:** My personal scripts for parsing and visualizing SO (Simons Observatory) data products.  
+
+---
+
+### [Simons-NSBP-Tutorial](https://github.com/msilvafe/Simons-NSBP-Tutorial)
+**Description:** This is just a trial tutorial for folks to learn about basic GitHub and git operations.  
+
+---
+
+## Major contributions (selected)
+
+{% assign user = site.data.contributed_repos.user %}
+
+{% for item in site.data.contributed_repos.repos %}
+  {% assign repo = item.full_name %}
+  {% assign s = site.data.contrib_stats.stats[repo] %}
+
+### [{{ repo }}](https://github.com/{{ repo }})
+
+**Description:** {{ item.description }}
+
+**My contribution statistics:**
+- PRs opened: {{ s.prs_opened | default: "—" }}
+- Issues opened: {{ s.issues_opened | default: "—" }}
+- Reviews: {{ s.reviews | default: "—" }}
+
+{% endfor %}

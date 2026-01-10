@@ -17,5 +17,3 @@ My research combines:
 
 - **Axion dark matter detection** (HAYSTAC, ALPHA): resonant detectors, quantum-enabled readout, high-frequency systems
 - **CMB instrumentation & analysis** (Simons Observatory): readout performance, time-ordered preprocessing, inflationary B-mode search
-
-Email: maximiliano.silva-feaver@yale.edu

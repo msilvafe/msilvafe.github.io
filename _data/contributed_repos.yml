@@ -1,0 +1,8 @@
+user: msilvafe
+repos:
+  - full_name: simonsobs/sotodlib
+    description: Core Simons Observatory TOD + metadata tooling (pipelines, IO, calibration, analysis utilities).
+  - full_name: simonsobs/socs
+    description: Observatory control system software and infrastructure.
+  - full_name: simonsobs/sodetlib
+    description: Detector characterization and analysis utilities for SO.

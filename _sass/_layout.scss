@@ -38,6 +38,89 @@ body.sticky-bottom-footer {
   }
 }
 
+/* --------------------------------------------------
+   Profile social icons (About page)
+-------------------------------------------------- */
+
+.profile-socials {
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.profile-socials a {
+  color: #222;          /* override purple link color */
+  margin: 0 0.4rem;
+  display: inline-block;
+}
+
+.profile-socials a:hover {
+  color: #00356b;       /* subtle academic blue on hover */
+  text-decoration: none;
+}
+
+.profile-socials i {
+  font-size: 1.6rem;    /* make icons larger */
+}
+
+/* in case some icons render as SVGs */
+.profile-socials svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+/* --------------------------------------------------
+   Research page: alternating image/text rows
+-------------------------------------------------- */
+
+.research-split {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin: 1.75rem 0;
+}
+
+.research-split .research-media {
+  flex: 0 0 33%;
+  max-width: 33%;
+}
+
+.research-split .research-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.5rem;
+}
+
+.research-split .research-body {
+  flex: 1 1 67%;
+  min-width: 0; /* prevents overflow on long lines */
+}
+
+.research-split .research-caption {
+  margin-top: 0.5rem;
+  font-size: 0.95em;
+  opacity: 0.85;
+}
+
+/* Alternate: image on the right */
+.research-split.right {
+  flex-direction: row-reverse;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+  .research-split,
+  .research-split.right {
+    flex-direction: column;
+  }
+  .research-split .research-media,
+  .research-split .research-body {
+    max-width: 100%;
+    flex-basis: auto;
+  }
+}
+
+
 // TODO: redefine content layout.
 
 /******************************************************************************
