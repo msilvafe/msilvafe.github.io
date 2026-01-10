@@ -18,7 +18,7 @@ ninja.data = [{
           },
         },{id: "nav-research",
           title: "Research",
-          description: "Axion dark matter detection and inflationary CMB B-modes.",
+          description: "Understanding dark matter and the early universe through precision experiments.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/research/";
