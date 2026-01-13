@@ -1,8 +1,8 @@
 ---
-layout: project
+layout: page
 title: "Research Shop: Wedding Party Gift Boxes"
 description: "A small fabrication project—requirements, tolerances, iteration, and finish—applied to something personal."
-img: assets/img/projects/gift-boxes/cover.jpg
+img: assets/img/research/wedding_party_gifts.jpg
 importance: 1
 category: fun
 ---

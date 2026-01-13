@@ -1,5 +1,5 @@
 ---
-layout: project
+layout: page
 title: "ALPHA: Plasma Haloscopes for High-Mass Axion Searches"
 description: "Metamaterial-based axion detection beyond conventional cavity scaling limits."
 img: assets/img/alpha.jpg

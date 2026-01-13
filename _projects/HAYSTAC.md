@@ -1,5 +1,5 @@
 ---
-layout: project
+layout: page
 title: "HAYSTAC: Axion Dark Matter with Quantum-Enabled Haloscopes"
 description: "Resonant axion detection with squeezed-state receivers and high-frequency cavity systems."
 img: assets/img/haystac.jpeg

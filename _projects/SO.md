@@ -1,5 +1,5 @@
 ---
-layout: project
+layout: page
 title: "Simons Observatory: CMB Instrumentation and Inflationary B-Modes"
 description: "Readout systems, time-ordered data preprocessing, and primordial B-mode searches."
 img: assets/img/simons_observatory.jpeg

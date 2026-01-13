@@ -93,15 +93,15 @@ I went on to earn my PhD, focusing on experimental instrumentation, detector rea
 
 ## Why I love this kind of science
 
-The questions I work on aren’t always directly impactful in an everyday sense—I’m not designing a medical device or a consumer product. But fundamental physics has a long history of shaping the modern world in unexpected ways (the internet being a famous example), and I find deep value in contributing to that lineage.
+The questions I work on aren’t always directly impactful in an everyday sense. I’m not designing a medical device or a consumer product—and that isn’t really the point. **Basic research is about asking questions that humans seem almost compelled to ask:** Where did we come from? What is the universe made of? Why does it behave the way it does? In that sense, I think basic research is closer to art or philosophy than to applied engineering. It’s a reflection of a very human impulse to ponder, create, and understand. 
 
-More personally, this work feels closer to <strong>art or philosophy</strong> than traditional engineering. I get to think about profound questions, invent new ways of interrogating nature, and still build real, physical systems that have to work. That balance of intellectual freedom and hands-on problem solving is what keeps me excited about coming to work every day.
+The fact that basic research often leads to transformative technologies (the internet being a well-known example) is a remarkable and valuable secondary outcome. But even without those downstream impacts, I believe this work is worth doing. It allows us to engage with some of the deepest questions we can ask as a people, while still inventing and building real physical systems that have to work. That combination of intellectual freedom paired with hands-on creation is what makes this work so beautiful to me.
 
 ---
 
 ## Beyond research
 
-Outside the lab, I enjoy <strong>collaborating closely with students and early-career researchers**, building open and reusable scientific software, and working on side projects that blend design, making, and creativity. I care deeply about mentorship and about making large scientific collaborations function smoothly and transparently.
+Outside the lab, I love to read fantasy and sci-fi novels, travel to explore new cities, food, and wine, and spend as much time at the beach in the sun as I can! I enjoy collaborating closely with students, building open and reusable scientific software, and working on side projects that blend design, making, and creativity. I care deeply about mentorship and about making large scientific collaborations function smoothly and transparently.
 
 If you’d like to learn more, you can explore:
 
