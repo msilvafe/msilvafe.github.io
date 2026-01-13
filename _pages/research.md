@@ -13,7 +13,6 @@ Answering these questions requires carefully designed experiments capable of det
 
 While the science spans vastly different scales, from sub-atomic particles to the entire cosmos, the underlying challenge is the same: inventing creative, reliable, and sensitive ways to extract physical truth from extremely small signals.
 
-
 <div class="research-split">
   <div class="research-media">
     <img src="/assets/img/research/overview_cosmic_timeline.jpg"

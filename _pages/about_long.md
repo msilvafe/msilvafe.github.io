@@ -5,9 +5,10 @@ permalink: /about/
 nav: true
 nav_order: 1
 ---
+
 ## About Me
 
-I’m an experimental physicist working at the intersection of <strong>particle physics and cosmology</strong>, where I build and study ultra-sensitive instruments designed to probe some of the most fundamental questions we can ask about the universe: *What is it made of? How did it begin? And what laws govern it at the deepest level?*
+I’m an experimental physicist working at the intersection of <strong>particle physics and cosmology</strong>, where I build and study ultra-sensitive instruments designed to probe some of the most fundamental questions we can ask about the universe: _What is it made of? How did it begin? And what laws govern it at the deepest level?_
 
 While the science I work on can feel abstract, my path into physics has always been rooted in <strong>building real things</strong> and seeing ideas move from paper to hardware.
 
@@ -93,7 +94,7 @@ I went on to earn my PhD, focusing on experimental instrumentation, detector rea
 
 ## Why I love this kind of science
 
-The questions I work on aren’t always directly impactful in an everyday sense. I’m not designing a medical device or a consumer product—and that isn’t really the point. **Basic research is about asking questions that humans seem almost compelled to ask:** Where did we come from? What is the universe made of? Why does it behave the way it does? In that sense, I think basic research is closer to art or philosophy than to applied engineering. It’s a reflection of a very human impulse to ponder, create, and understand. 
+The questions I work on aren’t always directly impactful in an everyday sense. I’m not designing a medical device or a consumer product—and that isn’t really the point. **Basic research is about asking questions that humans seem almost compelled to ask:** Where did we come from? What is the universe made of? Why does it behave the way it does? In that sense, I think basic research is closer to art or philosophy than to applied engineering. It’s a reflection of a very human impulse to ponder, create, and understand.
 
 The fact that basic research often leads to transformative technologies (the internet being a well-known example) is a remarkable and valuable secondary outcome. But even without those downstream impacts, I believe this work is worth doing. It allows us to engage with some of the deepest questions we can ask as a people, while still inventing and building real physical systems that have to work. That combination of intellectual freedom paired with hands-on creation is what makes this work so beautiful to me.
 
@@ -105,10 +106,9 @@ Outside the lab, I love to read fantasy and sci-fi novels, travel to explore new
 
 If you’d like to learn more, you can explore:
 
-- <strong>Research</strong> — an overview of the science questions and experiments I work on  
-- <strong>Projects</strong> — specific research and side projects  
-- <strong>Talks & Videos</strong> — recorded talks, presentations, and media  
-- <strong>CV & Publications</strong> — a full list of my academic work  
+- <strong>Research</strong> — an overview of the science questions and experiments I work on
+- <strong>Projects</strong> — specific research and side projects
+- <strong>Talks & Videos</strong> — recorded talks, presentations, and media
+- <strong>CV & Publications</strong> — a full list of my academic work
 
 I’m always happy to hear from students, collaborators, or anyone curious about experimental physics and cosmology.
-

@@ -15,6 +15,7 @@ description: A curated list of the public GitHub repositories that I actively co
 ---
 
 ### [Simons-NSBP-Tutorial](https://github.com/msilvafe/Simons-NSBP-Tutorial)
+
 **Description:** This is just a trial tutorial for folks to learn about basic GitHub and git operations which I built for a professional development series in the inaugural year of the Simons National Society of Black Physicists scholars summer program.
 
 ---

@@ -15,8 +15,8 @@ I’m a **Mossman Postdoctoral Fellow at Yale University**, working at the inter
 
 My research has two main threads:
 
-- **Axion dark matter detection** (HAYSTAC, ALPHA): resonant RF detectors, and quantum-limited / quantum-enhanced readout  
-- **CMB instrumentation & analysis** (Simons Observatory): readout performance, time-ordered preprocessing, noise modeling, and inflationary B-mode searches  
+- **Axion dark matter detection** (HAYSTAC, ALPHA): resonant RF detectors, and quantum-limited / quantum-enhanced readout
+- **CMB instrumentation & analysis** (Simons Observatory): readout performance, time-ordered preprocessing, noise modeling, and inflationary B-mode searches
 
 I got into this field because I love turning big physics questions into real hardware and measurement—creative, hands-on science that’s as much about invention as it is about equations.
 
