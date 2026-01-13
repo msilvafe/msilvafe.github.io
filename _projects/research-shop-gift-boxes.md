@@ -7,16 +7,4 @@ importance: 1
 category: fun
 ---
 
-I spend most of my time building and operating precision experiments, where small mechanical details, repeatability, and careful documentation matter. This project was a fun reminder that the same experimental mindset applies to non-research builds.
-
-For my wedding party, I made a set of gift boxes using the research shop. The “engineering” part wasn’t cutting—it was refining a process so that the _Nth_ box looked as good as the first.
-
-**What carried over from experimental work**
-
-- defining requirements (size, fit, presentation)
-- choosing materials for appearance and machinability
-- tolerances and repeatable assembly
-- prototyping and iteration
-- consistent finishing
-
-(Photos and build notes coming soon.)
+This was a fun project where I got to use my day-to-day experimental skills in the shop to design and make a few gifts for my wedding party. I designed a custom wedding clip and laser cut and polished it out of brass. I design a pair of dress socks. And I laser cut some gift boxes with a design and each of the wedding party's names on them. I designed them all around the swirl pattern of a B-mode the elusive signal I search for in the CMB. In the end it made a really special touch for my wedding and I had a lot of fun putting a little bit of me into the gifts. 
