@@ -6,10 +6,13 @@ nav: true
 description: Understanding dark matter and the early universe through precision experiments.
 ---
 
-My research is driven by a simple set of questions: <strong>What is the universe made of, and how did it begin? </strong>  
-Answering these questions requires both theoretical ideas and carefully designed experiments capable of detecting extraordinarily faint signals. I work at the intersection of <strong>particle physics </strong> and <strong>cosmology </strong>, building and operating precision instruments to search for dark matter and to study the earliest moments of the universe.
+My research is driven by a curiosity about some of the deepest questions we can ask:  
+<strong>What is the universe made of, and how did it begin?</strong>
 
-I approach this problem through two complementary research directions: <strong>dark matter detection </strong> and <strong>cosmology </strong>. While these fields use different tools, they are united by a common goal: uncovering the fundamental physics that shaped the universe we observe today.
+Answering these questions requires carefully designed experiments capable of detecting extraordinarily faint signals—often at the limits set by quantum mechanics itself. I work at the intersection of <strong>particle physics</strong> and <strong>cosmology</strong>, building and operating precision instruments to search for dark matter and to study the earliest moments of the universe.
+
+While the science spans vastly different scales, from sub-atomic particles to the entire cosmos, the underlying challenge is the same: inventing creative, reliable, and sensitive ways to extract physical truth from extremely small signals.
+
 
 <div class="research-split">
   <div class="research-media">

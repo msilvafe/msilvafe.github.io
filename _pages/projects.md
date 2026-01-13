@@ -9,6 +9,10 @@ display_categories: [research, fun]
 horizontal: false
 ---
 
+The projects below represent both my core research efforts and smaller experimental or creative side projects. My work typically spans hardware, software, and data analysis, often within large collaborations, and I enjoy building tools and systems that are useful well beyond a single experiment.
+
+Research projects include axion dark matter searches and CMB instrumentation, while “fun” projects reflect my interest in design, making, and creative problem-solving outside the lab.
+
 <!-- pages/projects.md -->
 <div class="projects">
 {% if site.enable_project_categories and page.display_categories %}
