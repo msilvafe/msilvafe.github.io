@@ -48,18 +48,18 @@ body.sticky-bottom-footer {
 }
 
 .profile-socials a {
-  color: #222;          /* override purple link color */
+  color: #222; /* override purple link color */
   margin: 0 0.4rem;
   display: inline-block;
 }
 
 .profile-socials a:hover {
-  color: #00356b;       /* subtle academic blue on hover */
+  color: #00356b; /* subtle academic blue on hover */
   text-decoration: none;
 }
 
 .profile-socials i {
-  font-size: 1.6rem;    /* make icons larger */
+  font-size: 1.6rem; /* make icons larger */
 }
 
 /* in case some icons render as SVGs */
@@ -119,7 +119,6 @@ body.sticky-bottom-footer {
     flex-basis: auto;
   }
 }
-
 
 // TODO: redefine content layout.
 

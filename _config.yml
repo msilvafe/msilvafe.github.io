@@ -24,7 +24,6 @@ back_to_top: true # set to false to disable the back to top button
 
 # --- Social / academic links ---
 
-
 # --- UI ---
 enable_darkmode: true
 navbar_fixed: true

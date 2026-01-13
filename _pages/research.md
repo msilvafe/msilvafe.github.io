@@ -43,6 +43,7 @@ While the science spans vastly different scales, from sub-atomic particles to th
     Astronomical observations show that most of the matter in the universe is invisible. Galaxies rotate too quickly to be held together by the gravity of their visible stars alone, clusters of galaxies bend light more strongly than expected, and the large-scale structure of the universe cannot be explained without an additional, unseen component.
 
     This missing material— </strong>dark matter </strong>—accounts for roughly <strong>85% of all matter </strong> in the universe. Despite overwhelming evidence for its existence, the particle nature of dark matter remains unknown, making it one of the most important open problems in modern physics.
+
   </div>
 </div>
 
@@ -60,6 +61,7 @@ While the science spans vastly different scales, from sub-atomic particles to th
     One particularly compelling dark matter candidate is the <strong>axion </strong>, a hypothetical particle originally proposed to solve a puzzle in particle physics related to the strong nuclear force. Remarkably, the same theory predicts a particle with properties that make it an excellent dark matter candidate.
 
     Axions would be extremely light, electrically neutral, and interact only very weakly with ordinary matter. These properties make them difficult to detect, but also allow them to naturally account for the observed abundance of dark matter in the universe.
+
   </div>
 </div>
 
@@ -77,6 +79,7 @@ While the science spans vastly different scales, from sub-atomic particles to th
     The <strong>HAYSTAC </strong> experiment searches for axion dark matter using a technique known as a <strong>haloscope </strong>. A microwave cavity is placed inside a strong magnetic field, where axions could convert into extremely faint microwave photons.
 
     Detecting this signal requires extraordinary sensitivity—far below typical electronic noise levels. HAYSTAC has pioneered quantum-enabled measurement techniques that push beyond traditional limits, achieving world-leading sensitivity across multiple axion mass ranges.
+
   </div>
 </div>
 
@@ -94,6 +97,7 @@ While the science spans vastly different scales, from sub-atomic particles to th
     As axion searches move to higher masses, traditional microwave cavities become smaller and less sensitive. The <strong>ALPHA </strong> experiment addresses this challenge using resonant structures inspired by metamaterials.
 
     In ALPHA, the resonant frequency is determined by the effective properties of the structure rather than its physical size. This approach enables searches at higher axion masses while maintaining large detection volumes, opening new parameter space for discovery.
+
   </div>
 </div>
 
@@ -113,6 +117,7 @@ While the science spans vastly different scales, from sub-atomic particles to th
     Cosmology seeks to understand the universe as a whole—its origin, composition, evolution, and ultimate fate. Observations on the largest scales allow us to test physical theories under extreme conditions that cannot be reproduced on Earth.
 
     Many of the most powerful cosmological probes rely on detecting extremely faint signals, requiring sophisticated instrumentation and careful control of systematic effects.
+
   </div>
 </div>
 
@@ -130,6 +135,7 @@ While the science spans vastly different scales, from sub-atomic particles to th
     The <strong>cosmic microwave background (CMB) </strong> is the oldest light we can observe, emitted when the universe was about <strong>380,000 years old </strong>. Today, it appears as a nearly uniform glow of microwave radiation across the sky.
 
     Tiny temperature and polarization variations in the CMB provide a detailed snapshot of the early universe, allowing precise measurements of its geometry, composition, and initial conditions.
+
   </div>
 </div>
 
@@ -147,6 +153,7 @@ While the science spans vastly different scales, from sub-atomic particles to th
     <strong>Cosmic inflation </strong> proposes that the universe underwent a brief period of extremely rapid expansion shortly after the Big Bang. This theory explains why the universe appears uniform on large scales while still containing the seeds of structure formation.
 
     Although inflation is strongly supported by observations, its physical mechanism remains unknown. Testing inflation experimentally is therefore a central goal of modern cosmology.
+
   </div>
 </div>
 
@@ -164,6 +171,7 @@ While the science spans vastly different scales, from sub-atomic particles to th
     A particularly important target in CMB studies is <strong>B-mode polarization </strong>, a subtle pattern that could be produced by gravitational waves generated during inflation.
 
     Detecting primordial B-modes would provide direct evidence for inflation and probe physics at energy scales far beyond those accessible in laboratory experiments. Achieving this requires both exquisite detector sensitivity and precise control of instrumental effects.
+
   </div>
 </div>
 
@@ -181,5 +189,6 @@ While the science spans vastly different scales, from sub-atomic particles to th
     The <strong>Simons Observatory </strong> is a next-generation CMB experiment located in the high Atacama Desert of Chile. It combines multiple telescopes with thousands of ultra-sensitive detectors.
 
     By improving sensitivity and controlling systematic uncertainties, the Simons Observatory aims to test models of inflation, constrain properties of dark matter and neutrinos, and refine measurements of fundamental cosmological parameters.
+
   </div>
 </div>
