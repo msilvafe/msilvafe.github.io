@@ -1,4 +1,4 @@
-generated: "2026-02-19"
+generated: "2026-02-20"
 stats:
   simonsobs/sotodlib:
     prs_opened: 54
@@ -11,4 +11,4 @@ stats:
   simonsobs/sodetlib:
     prs_opened: 18
     issues_opened: 13
-    reviews: 72
+    reviews: 73
