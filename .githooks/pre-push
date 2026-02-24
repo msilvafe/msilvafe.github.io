@@ -7,7 +7,28 @@ if ! git diff --quiet || ! git diff --cached --quiet; then
 fi
 
 echo "[hook] running prettify..."
-npm run prettify
+
+run_prettify() {
+  if command -v npm >/dev/null 2>&1; then
+    npm run prettify
+    return
+  fi
+
+  if command -v npm.cmd >/dev/null 2>&1; then
+    npm.cmd run prettify
+    return
+  fi
+
+  if command -v cmd.exe >/dev/null 2>&1; then
+    cmd.exe /c npm run prettify
+    return
+  fi
+
+  echo "[hook] npm not found in PATH (tried npm, npm.cmd, cmd.exe /c npm)."
+  exit 1
+}
+
+run_prettify
 echo "[hook] prettify done."
 
 if ! git diff --quiet; then
