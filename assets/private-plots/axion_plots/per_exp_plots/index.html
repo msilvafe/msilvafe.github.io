@@ -67,6 +67,7 @@
         top: 0;
         left: 0;
         right: 0;
+        z-index: 3;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -89,6 +90,7 @@
       .lbStage {
         position: absolute;
         inset: 0;
+        z-index: 2;
         display: grid;
         place-items: center;
         padding: 52px 18px 18px 18px;
@@ -154,9 +156,8 @@
     <div class="top">
       <div>
         <h1 style="margin: 0 0 6px 0">axion_plots / per_exp_plots</h1>
-        <div class="meta">28 image(s) • Updated 2026-02-24 10:54</div>
+        <div class="meta">28 image(s)</div>
       </div>
-      <div><a href="../">← Back</a></div>
     </div>
 
     <div class="grid">
@@ -477,6 +478,7 @@
       // Click outside image closes; click on left/right half of stage navigates
       document.getElementById("lbStage").addEventListener("click", (e) => {
         if (e.target === lbImg) return; // clicking the image itself does nothing
+        if (e.target.closest(".lbNav")) return; // nav buttons already handle clicks
         // If click is near edges, navigate; otherwise close
         const x = e.clientX;
         const w = window.innerWidth;

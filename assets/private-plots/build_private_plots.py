@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
-from datetime import datetime
 from collections import defaultdict
 
 IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp"}
@@ -33,10 +32,9 @@ def list_images(dir_path: Path) -> list[Path]:
     return sorted(imgs, key=lambda p: natural_sort_key(p.name))
 
 
-def write_gallery_index(dir_path: Path, title: str, back_href: str) -> int:
+def write_gallery_index(dir_path: Path, title: str, back_href: str | None) -> int:
     images = list_images(dir_path)
     names = [p.name for p in images]
-    now = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     # Build thumbnail cards
     thumbs_html = []
@@ -56,6 +54,8 @@ def write_gallery_index(dir_path: Path, title: str, back_href: str) -> int:
         return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
     images_js = ", ".join(js_str(n) for n in names)
+
+    back_link_html = f'<div><a href="{back_href}">← Back</a></div>' if back_href else ""
 
     html = f"""<!doctype html>
 <html lang="en">
@@ -124,6 +124,7 @@ def write_gallery_index(dir_path: Path, title: str, back_href: str) -> int:
       top: 0;
       left: 0;
       right: 0;
+      z-index: 3;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -144,6 +145,7 @@ def write_gallery_index(dir_path: Path, title: str, back_href: str) -> int:
     .lbStage {{
       position: absolute;
       inset: 0;
+      z-index: 2;
       display: grid;
       place-items: center;
       padding: 52px 18px 18px 18px;
@@ -196,9 +198,9 @@ def write_gallery_index(dir_path: Path, title: str, back_href: str) -> int:
   <div class="top">
     <div>
       <h1 style="margin: 0 0 6px 0;">{title}</h1>
-      <div class="meta">{len(names)} image(s) • Updated {now}</div>
+      <div class="meta">{len(names)} image(s)</div>
     </div>
-    <div><a href="{back_href}">← Back</a></div>
+    {back_link_html}
   </div>
 
   <div class="grid">
@@ -292,6 +294,7 @@ def write_gallery_index(dir_path: Path, title: str, back_href: str) -> int:
     // Click outside image closes; click on left/right half of stage navigates
     document.getElementById('lbStage').addEventListener('click', (e) => {{
       if (e.target === lbImg) return; // clicking the image itself does nothing
+      if (e.target.closest('.lbNav')) return; // nav buttons already handle clicks
       // If click is near edges, navigate; otherwise close
       const x = e.clientX;
       const w = window.innerWidth;
@@ -320,6 +323,68 @@ def write_gallery_index(dir_path: Path, title: str, back_href: str) -> int:
 """
     (dir_path / "index.html").write_text(html, encoding="utf-8")
     return len(names)
+
+
+def write_directory_hub_index(dir_path: Path, title: str, back_href: str | None, child_dirs: list[str]) -> None:
+    child_links = "\n".join([f'    <li><a href="{name}/">{name}</a></li>' for name in child_dirs])
+    back_link_html = f'<p><a href="{back_href}">← Back</a></p>' if back_href else ""
+    html = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>{title}</title>
+  <style>
+    body {{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 24px;
+      max-width: 900px;
+    }}
+    .meta {{ color:#666; font-size:14px; margin-bottom: 12px; }}
+    a {{ text-decoration: none; }}
+    li {{ margin: 6px 0; }}
+  </style>
+</head>
+<body>
+  <h1>{title}</h1>
+  {back_link_html}
+  <h2>Galleries</h2>
+  <ul>
+{child_links}
+  </ul>
+</body>
+</html>
+"""
+    (dir_path / "index.html").write_text(html, encoding="utf-8")
+
+
+def write_private_plots_404(private_plots_dir: Path) -> None:
+    html = """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>Private plots — Not found</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      margin: 24px;
+      max-width: 900px;
+    }
+    .meta { color:#666; }
+    a { text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>Private plots: page not found</h1>
+  <p class="meta">The requested path does not exist in the private-plots namespace.</p>
+  <p><a href="/assets/private-plots/">Go to private-plots index</a></p>
+</body>
+</html>
+"""
+    (private_plots_dir / "404.html").write_text(html, encoding="utf-8")
 
 def find_image_dirs(private_plots_dir: Path) -> list[Path]:
     """Return directories (including nested) that contain at least one image file."""
@@ -422,7 +487,8 @@ def update_plots_md(repo_root: Path, private_plots_dir: Path, image_dirs: list[P
 
     pattern = re.compile(re.escape(START_MARKER) + r".*?" + re.escape(END_MARKER), flags=re.DOTALL)
     new_text = pattern.sub(new_block, text, count=1)
-    plots_md.write_text(new_text, encoding="utf-8")
+    if new_text != text:
+        plots_md.write_text(new_text, encoding="utf-8")
 
 
 def main():
@@ -435,6 +501,18 @@ def main():
         print(f"[warn] No images found under {private_plots_dir}. Nothing to do.")
         return
 
+    # Create directory hubs for intermediate directories that don't contain images
+    # but should still have an index (e.g., axion_plots/).
+    hub_dirs = set()
+    for d in image_dirs:
+        cur = d.parent
+        while cur != private_plots_dir and cur.is_relative_to(private_plots_dir):
+            hub_dirs.add(cur)
+            cur = cur.parent
+    hub_dirs = sorted(hub_dirs - set(image_dirs), key=lambda p: natural_sort_key(p.name))
+
+    relevant_dirs = set(image_dirs) | set(hub_dirs)
+
     # Write a top-level index.html overview in assets/private-plots/
     # (This will show images only if there are images directly in private-plots/;
     # but it's still useful as a landing page that links out.)
@@ -445,22 +523,27 @@ def main():
     for d in image_dirs:
         # Back link: if nested, go up one level; if top-level, go to /plots/
         if d == private_plots_dir:
-            back_href = "/plots/"
+            back_href = None
             title = "Private plots"
         else:
-            # link to parent directory index if parent is under private-plots; otherwise /plots/
-            parent = d.parent
-            back_href = "../" if parent.exists() else "/plots/"
+            back_href = None
             title = " / ".join(d.relative_to(private_plots_dir).parts)
 
         n = write_gallery_index(d, title=title, back_href=back_href)
         print(f"[ok] Wrote {d / 'index.html'} with {n} image(s)")
 
+    # Create/overwrite index.html for directory hubs with links to child galleries/hubs
+    for d in hub_dirs:
+        child_dirs = sorted([child.name for child in relevant_dirs if child.parent == d], key=natural_sort_key)
+        title = " / ".join(d.relative_to(private_plots_dir).parts)
+        back_href = None
+        write_directory_hub_index(d, title=title, back_href=back_href, child_dirs=child_dirs)
+        print(f"[ok] Wrote {d / 'index.html'} (hub with {len(child_dirs)} link(s))")
+
     # Write a top-level link hub index.html that lists all galleries
     tree = build_tree(private_plots_dir, image_dirs)
     nested_list = render_tree_html(tree, base_url)
 
-    now = datetime.now().strftime("%Y-%m-%d %H:%M")
     hub = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -481,8 +564,6 @@ def main():
 </head>
 <body>
   <h1>Private plots</h1>
-  <div class="meta">Updated {now}</div>
-  <p><a href="/plots/">← Back to /plots/</a></p>
   <h2>Galleries</h2>
   {nested_list}
 </body>
@@ -490,6 +571,9 @@ def main():
 """
     (private_plots_dir / "index.html").write_text(hub, encoding="utf-8")
     print(f"[ok] Wrote {private_plots_dir / 'index.html'} (hub)")
+
+    write_private_plots_404(private_plots_dir)
+    print(f"[ok] Wrote {private_plots_dir / '404.html'}")
 
     # Update _pages/plots.md
     update_plots_md(repo_root, private_plots_dir, image_dirs)
