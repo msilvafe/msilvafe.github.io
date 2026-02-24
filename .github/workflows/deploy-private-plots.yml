@@ -1,0 +1,65 @@
+name: Deploy private plots only
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - "assets/private-plots/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-private-plots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Ensure gh-pages worktree
+        run: |
+          if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+            git worktree add gh-pages-worktree origin/gh-pages
+          else
+            git checkout --orphan gh-pages
+            git rm -rf . || true
+            echo "# gh-pages" > README.md
+            git add README.md
+            git commit -m "Initialize gh-pages"
+            git push origin gh-pages
+            git checkout -
+            git fetch origin gh-pages
+            git worktree add gh-pages-worktree origin/gh-pages
+          fi
+
+      - name: Sync private plots
+        run: |
+          mkdir -p gh-pages-worktree/assets/private-plots
+          rsync -a --delete assets/private-plots/ gh-pages-worktree/assets/private-plots/
+
+      - name: Commit and push (if changed)
+        run: |
+          cd gh-pages-worktree
+          git add assets/private-plots
+          if git diff --cached --quiet; then
+            echo "No changes to deploy."
+            exit 0
+          fi
+          git commit -m "Deploy private plots"
+          git push origin HEAD:gh-pages
+
+      - name: Cleanup worktree
+        if: always()
+        run: |
+          git worktree remove gh-pages-worktree --force || true
+          rm -rf gh-pages-worktree
