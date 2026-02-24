@@ -1,0 +1,21 @@
+#!/bin/sh
+set -e
+
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "[hook] working tree is not clean. Commit or stash your changes first."
+  exit 1
+fi
+
+echo "[hook] running prettify..."
+npm run prettify
+echo "[hook] prettify done."
+
+if ! git diff --quiet; then
+  echo "[hook] formatting changes detected; creating commit..."
+  git add -u
+  git commit -m "chore: prettify"
+  echo "[hook] commit created. Re-run 'git push' to include it."
+  exit 1
+fi
+
+exit 0

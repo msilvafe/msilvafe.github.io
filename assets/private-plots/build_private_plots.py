@@ -35,7 +35,27 @@ def list_images(dir_path: Path) -> list[Path]:
 
 def write_gallery_index(dir_path: Path, title: str, back_href: str) -> int:
     images = list_images(dir_path)
+    names = [p.name for p in images]
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+    # Build thumbnail cards
+    thumbs_html = []
+    for i, name in enumerate(names):
+        thumbs_html.append(f"""
+    <div class="card">
+      <button class="thumbBtn" data-idx="{i}" aria-label="Open {name}">
+        <img class="thumb" src="{name}" loading="lazy" />
+      </button>
+      <div class="name">{name}</div>
+    </div>
+""".rstrip())
+
+    # JS needs a JSON-ish array of strings (safe for filenames)
+    # We’ll escape backslashes and quotes minimally.
+    def js_str(s: str) -> str:
+        return '"' + s.replace("\\", "\\\\").replace('"', '\\"') + '"'
+
+    images_js = ", ".join(js_str(n) for n in names)
 
     html = f"""<!doctype html>
 <html lang="en">
@@ -72,6 +92,11 @@ def write_gallery_index(dir_path: Path, title: str, back_href: str) -> int:
       border-radius: 10px;
       padding: 10px;
     }}
+    .thumbBtn {{
+      all: unset;
+      cursor: zoom-in;
+      display: block;
+    }}
     .thumb {{
       width: 100%;
       height: auto;
@@ -84,36 +109,217 @@ def write_gallery_index(dir_path: Path, title: str, back_href: str) -> int:
       color: #444;
       word-break: break-all;
     }}
+
+    /* Lightbox */
+    .lb {{
+      position: fixed;
+      inset: 0;
+      display: none;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+    }}
+    .lb.open {{ display: block; }}
+    .lbTop {{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      color: #fff;
+      font-size: 14px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0));
+    }}
+    .lbBtn {{
+      all: unset;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.12);
+    }}
+    .lbBtn:hover {{ background: rgba(255,255,255,0.18); }}
+    .lbStage {{
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 52px 18px 18px 18px;
+    }}
+    .lbImg {{
+      max-width: min(96vw, 1400px);
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      cursor: default;
+      user-select: none;
+    }}
+    .lbCaption {{
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: rgba(255,255,255,0.85);
+      font-size: 13px;
+      padding: 8px 14px;
+    }}
+    .lbNav {{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: rgba(255,255,255,0.12);
+      cursor: pointer;
+      user-select: none;
+    }}
+    .lbNav:hover {{ background: rgba(255,255,255,0.18); }}
+    .lbPrev {{ left: 16px; }}
+    .lbNext {{ right: 16px; }}
+    @media (max-width: 640px) {{
+      .lbNav {{ width: 46px; height: 46px; }}
+      .lbPrev {{ left: 10px; }}
+      .lbNext {{ right: 10px; }}
+    }}
   </style>
 </head>
 <body>
   <div class="top">
     <div>
       <h1 style="margin: 0 0 6px 0;">{title}</h1>
-      <div class="meta">{len(images)} image(s) • Updated {now}</div>
+      <div class="meta">{len(names)} image(s) • Updated {now}</div>
     </div>
     <div><a href="{back_href}">← Back</a></div>
   </div>
 
   <div class="grid">
-"""
-    for img in images:
-        name = img.name
-        html += f"""    <div class="card">
-      <a href="{name}">
-        <img class="thumb" src="{name}" loading="lazy" />
-      </a>
-      <div class="name">{name}</div>
-    </div>
-"""
+{chr(10).join(thumbs_html)}
+  </div>
 
-    html += """  </div>
+  <!-- Lightbox overlay -->
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lbTop">
+      <div id="lbInfo"></div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="lbBtn" id="lbOpen" href="#" target="_blank" rel="noopener">Open</a>
+        <button class="lbBtn" id="lbClose" aria-label="Close (Esc)">Close</button>
+      </div>
+    </div>
+
+    <div class="lbStage" id="lbStage">
+      <div class="lbNav lbPrev" id="lbPrev" aria-label="Previous (Left Arrow)">&#x2039;</div>
+      <img class="lbImg" id="lbImg" alt="">
+      <div class="lbNav lbNext" id="lbNext" aria-label="Next (Right Arrow)">&#x203A;</div>
+      <div class="lbCaption" id="lbCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    const IMAGES = [{images_js}];
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lbImg');
+    const lbCaption = document.getElementById('lbCaption');
+    const lbInfo = document.getElementById('lbInfo');
+    const lbOpen = document.getElementById('lbOpen');
+
+    let idx = 0;
+
+    function clampIndex(i) {{
+      const n = IMAGES.length;
+      return (i % n + n) % n;
+    }}
+
+    function setHash(i) {{
+      // keep it simple; avoids interfering with Jekyll routing
+      history.replaceState(null, "", `#img=${{i}}`);
+    }}
+
+    function readHash() {{
+      const m = location.hash.match(/img=(\\d+)/);
+      return m ? parseInt(m[1], 10) : null;
+    }}
+
+    function show(i, set_url=true) {{
+      if (!IMAGES.length) return;
+      idx = clampIndex(i);
+      const name = IMAGES[idx];
+      lbImg.src = name;
+      lbImg.alt = name;
+      lbCaption.textContent = name;
+      lbInfo.textContent = `${{idx+1}} / ${{IMAGES.length}}`;
+      lbOpen.href = name;
+      lb.classList.add('open');
+      if (set_url) setHash(idx);
+      // prevent background scroll
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    }}
+
+    function close() {{
+      lb.classList.remove('open');
+      // restore scroll
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      // remove hash without jumping
+      history.replaceState(null, "", location.pathname + location.search);
+    }}
+
+    function next() {{ show(idx + 1); }}
+    function prev() {{ show(idx - 1); }}
+
+    // Thumbnail clicks
+    document.querySelectorAll('.thumbBtn').forEach(btn => {{
+      btn.addEventListener('click', () => {{
+        const i = parseInt(btn.dataset.idx, 10);
+        show(i);
+      }});
+    }});
+
+    // Controls
+    document.getElementById('lbClose').addEventListener('click', close);
+    document.getElementById('lbNext').addEventListener('click', next);
+    document.getElementById('lbPrev').addEventListener('click', prev);
+
+    // Click outside image closes; click on left/right half of stage navigates
+    document.getElementById('lbStage').addEventListener('click', (e) => {{
+      if (e.target === lbImg) return; // clicking the image itself does nothing
+      // If click is near edges, navigate; otherwise close
+      const x = e.clientX;
+      const w = window.innerWidth;
+      if (x < w * 0.33) prev();
+      else if (x > w * 0.67) next();
+      else close();
+    }});
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {{
+      if (!lb.classList.contains('open')) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowRight" || e.key === "l" || e.key === "j") next();
+      else if (e.key === "ArrowLeft"  || e.key === "h" || e.key === "k") prev();
+    }});
+
+    // If someone loads the page with #img=N, open that image
+    const initial = readHash();
+    if (initial !== null && !Number.isNaN(initial)) {{
+      show(initial, false);
+      setHash(clampIndex(initial));
+    }}
+  </script>
 </body>
 </html>
 """
     (dir_path / "index.html").write_text(html, encoding="utf-8")
-    return len(images)
-
+    return len(names)
 
 def find_image_dirs(private_plots_dir: Path) -> list[Path]:
     """Return directories (including nested) that contain at least one image file."""
