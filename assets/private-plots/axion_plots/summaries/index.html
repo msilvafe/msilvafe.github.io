@@ -1,290 +1,309 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="robots" content="noindex, nofollow"/>
-  <title>axion_plots / summaries</title>
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      margin: 24px;
-      max-width: 1200px;
-    }
-    .top {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-    .meta {
-      color: #666;
-      font-size: 14px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 14px;
-    }
-    .card {
-      border: 1px solid #eee;
-      border-radius: 10px;
-      padding: 10px;
-    }
-    .thumbBtn {
-      all: unset;
-      cursor: zoom-in;
-      display: block;
-    }
-    .thumb {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      display: block;
-    }
-    .name {
-      margin-top: 8px;
-      font-size: 13px;
-      color: #444;
-      word-break: break-all;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>axion_plots / summaries</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        margin: 24px;
+        max-width: 1200px;
+      }
+      .top {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
+      .meta {
+        color: #666;
+        font-size: 14px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 14px;
+      }
+      .card {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 10px;
+      }
+      .thumbBtn {
+        all: unset;
+        cursor: zoom-in;
+        display: block;
+      }
+      .thumb {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+      }
+      .name {
+        margin-top: 8px;
+        font-size: 13px;
+        color: #444;
+        word-break: break-all;
+      }
 
-    /* Lightbox */
-    .lb {
-      position: fixed;
-      inset: 0;
-      display: none;
-      background: rgba(0,0,0,0.92);
-      z-index: 9999;
-    }
-    .lb.open { display: block; }
-    .lbTop {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 3;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 14px;
-      color: #fff;
-      font-size: 14px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.65), rgba(0,0,0,0));
-    }
-    .lbBtn {
-      all: unset;
-      cursor: pointer;
-      padding: 6px 10px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.12);
-    }
-    .lbBtn:hover { background: rgba(255,255,255,0.18); }
-    .lbStage {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      display: grid;
-      place-items: center;
-      padding: 52px 18px 18px 18px;
-    }
-    .lbImg {
-      max-width: min(96vw, 1400px);
-      max-height: 90vh;
-      width: auto;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      cursor: default;
-      user-select: none;
-    }
-    .lbCaption {
-      position: absolute;
-      bottom: 10px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      color: rgba(255,255,255,0.85);
-      font-size: 13px;
-      padding: 8px 14px;
-    }
-    .lbNav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 56px;
-      height: 56px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      background: rgba(255,255,255,0.12);
-      cursor: pointer;
-      user-select: none;
-    }
-    .lbNav:hover { background: rgba(255,255,255,0.18); }
-    .lbPrev { left: 16px; }
-    .lbNext { right: 16px; }
-    @media (max-width: 640px) {
-      .lbNav { width: 46px; height: 46px; }
-      .lbPrev { left: 10px; }
-      .lbNext { right: 10px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="top">
-    <div>
-      <h1 style="margin: 0 0 6px 0;">axion_plots / summaries</h1>
-      <div class="meta">4 image(s)</div>
-    </div>
-    
-  </div>
-
-  <div class="grid">
-
-    <div class="card">
-      <button class="thumbBtn" data-idx="0" aria-label="Open summary_all.png">
-        <img class="thumb" src="summary_all.png" loading="lazy" />
-      </button>
-      <div class="name">summary_all.png</div>
-    </div>
-
-    <div class="card">
-      <button class="thumbBtn" data-idx="1" aria-label="Open summary_forecasts_only.png">
-        <img class="thumb" src="summary_forecasts_only.png" loading="lazy" />
-      </button>
-      <div class="name">summary_forecasts_only.png</div>
-    </div>
-
-    <div class="card">
-      <button class="thumbBtn" data-idx="2" aria-label="Open summary_results_only.png">
-        <img class="thumb" src="summary_results_only.png" loading="lazy" />
-      </button>
-      <div class="name">summary_results_only.png</div>
-    </div>
-
-    <div class="card">
-      <button class="thumbBtn" data-idx="3" aria-label="Open summary_results_only_with_bolometry.png">
-        <img class="thumb" src="summary_results_only_with_bolometry.png" loading="lazy" />
-      </button>
-      <div class="name">summary_results_only_with_bolometry.png</div>
-    </div>
-  </div>
-
-  <!-- Lightbox overlay -->
-  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
-    <div class="lbTop">
-      <div id="lbInfo"></div>
-      <div style="display:flex; gap:10px; align-items:center;">
-        <a class="lbBtn" id="lbOpen" href="#" target="_blank" rel="noopener">Open</a>
-        <button class="lbBtn" id="lbClose" aria-label="Close (Esc)">Close</button>
+      /* Lightbox */
+      .lb {
+        position: fixed;
+        inset: 0;
+        display: none;
+        background: rgba(0, 0, 0, 0.92);
+        z-index: 9999;
+      }
+      .lb.open {
+        display: block;
+      }
+      .lbTop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 3;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        color: #fff;
+        font-size: 14px;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0));
+      }
+      .lbBtn {
+        all: unset;
+        cursor: pointer;
+        padding: 6px 10px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .lbBtn:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .lbStage {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        padding: 52px 18px 18px 18px;
+      }
+      .lbImg {
+        max-width: min(96vw, 1400px);
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        cursor: default;
+        user-select: none;
+      }
+      .lbCaption {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 13px;
+        padding: 8px 14px;
+      }
+      .lbNav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 56px;
+        height: 56px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.12);
+        cursor: pointer;
+        user-select: none;
+      }
+      .lbNav:hover {
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .lbPrev {
+        left: 16px;
+      }
+      .lbNext {
+        right: 16px;
+      }
+      @media (max-width: 640px) {
+        .lbNav {
+          width: 46px;
+          height: 46px;
+        }
+        .lbPrev {
+          left: 10px;
+        }
+        .lbNext {
+          right: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top">
+      <div>
+        <h1 style="margin: 0 0 6px 0">axion_plots / summaries</h1>
+        <div class="meta">4 image(s)</div>
       </div>
     </div>
 
-    <div class="lbStage" id="lbStage">
-      <div class="lbNav lbPrev" id="lbPrev" aria-label="Previous (Left Arrow)">&#x2039;</div>
-      <img class="lbImg" id="lbImg" alt="">
-      <div class="lbNav lbNext" id="lbNext" aria-label="Next (Right Arrow)">&#x203A;</div>
-      <div class="lbCaption" id="lbCaption"></div>
+    <div class="grid">
+      <div class="card">
+        <button class="thumbBtn" data-idx="0" aria-label="Open summary_all.png">
+          <img class="thumb" src="summary_all.png" loading="lazy" />
+        </button>
+        <div class="name">summary_all.png</div>
+      </div>
+
+      <div class="card">
+        <button class="thumbBtn" data-idx="1" aria-label="Open summary_forecasts_only.png">
+          <img class="thumb" src="summary_forecasts_only.png" loading="lazy" />
+        </button>
+        <div class="name">summary_forecasts_only.png</div>
+      </div>
+
+      <div class="card">
+        <button class="thumbBtn" data-idx="2" aria-label="Open summary_results_only.png">
+          <img class="thumb" src="summary_results_only.png" loading="lazy" />
+        </button>
+        <div class="name">summary_results_only.png</div>
+      </div>
+
+      <div class="card">
+        <button class="thumbBtn" data-idx="3" aria-label="Open summary_results_only_with_bolometry.png">
+          <img class="thumb" src="summary_results_only_with_bolometry.png" loading="lazy" />
+        </button>
+        <div class="name">summary_results_only_with_bolometry.png</div>
+      </div>
     </div>
-  </div>
 
-  <script>
-    const IMAGES = ["summary_all.png", "summary_forecasts_only.png", "summary_results_only.png", "summary_results_only_with_bolometry.png"];
-    const lb = document.getElementById('lb');
-    const lbImg = document.getElementById('lbImg');
-    const lbCaption = document.getElementById('lbCaption');
-    const lbInfo = document.getElementById('lbInfo');
-    const lbOpen = document.getElementById('lbOpen');
+    <!-- Lightbox overlay -->
+    <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <div class="lbTop">
+        <div id="lbInfo"></div>
+        <div style="display: flex; gap: 10px; align-items: center">
+          <a class="lbBtn" id="lbOpen" href="#" target="_blank" rel="noopener">Open</a>
+          <button class="lbBtn" id="lbClose" aria-label="Close (Esc)">Close</button>
+        </div>
+      </div>
 
-    let idx = 0;
+      <div class="lbStage" id="lbStage">
+        <div class="lbNav lbPrev" id="lbPrev" aria-label="Previous (Left Arrow)">&#x2039;</div>
+        <img class="lbImg" id="lbImg" alt="" />
+        <div class="lbNav lbNext" id="lbNext" aria-label="Next (Right Arrow)">&#x203A;</div>
+        <div class="lbCaption" id="lbCaption"></div>
+      </div>
+    </div>
 
-    function clampIndex(i) {
-      const n = IMAGES.length;
-      return (i % n + n) % n;
-    }
+    <script>
+      const IMAGES = ["summary_all.png", "summary_forecasts_only.png", "summary_results_only.png", "summary_results_only_with_bolometry.png"];
+      const lb = document.getElementById("lb");
+      const lbImg = document.getElementById("lbImg");
+      const lbCaption = document.getElementById("lbCaption");
+      const lbInfo = document.getElementById("lbInfo");
+      const lbOpen = document.getElementById("lbOpen");
 
-    function setHash(i) {
-      // keep it simple; avoids interfering with Jekyll routing
-      history.replaceState(null, "", `#img=${i}`);
-    }
+      let idx = 0;
 
-    function readHash() {
-      const m = location.hash.match(/img=(\d+)/);
-      return m ? parseInt(m[1], 10) : null;
-    }
+      function clampIndex(i) {
+        const n = IMAGES.length;
+        return ((i % n) + n) % n;
+      }
 
-    function show(i, set_url=true) {
-      if (!IMAGES.length) return;
-      idx = clampIndex(i);
-      const name = IMAGES[idx];
-      lbImg.src = name;
-      lbImg.alt = name;
-      lbCaption.textContent = name;
-      lbInfo.textContent = `${idx+1} / ${IMAGES.length}`;
-      lbOpen.href = name;
-      lb.classList.add('open');
-      if (set_url) setHash(idx);
-      // prevent background scroll
-      document.documentElement.style.overflow = "hidden";
-      document.body.style.overflow = "hidden";
-    }
+      function setHash(i) {
+        // keep it simple; avoids interfering with Jekyll routing
+        history.replaceState(null, "", `#img=${i}`);
+      }
 
-    function close() {
-      lb.classList.remove('open');
-      // restore scroll
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
-      // remove hash without jumping
-      history.replaceState(null, "", location.pathname + location.search);
-    }
+      function readHash() {
+        const m = location.hash.match(/img=(\d+)/);
+        return m ? parseInt(m[1], 10) : null;
+      }
 
-    function next() { show(idx + 1); }
-    function prev() { show(idx - 1); }
+      function show(i, set_url = true) {
+        if (!IMAGES.length) return;
+        idx = clampIndex(i);
+        const name = IMAGES[idx];
+        lbImg.src = name;
+        lbImg.alt = name;
+        lbCaption.textContent = name;
+        lbInfo.textContent = `${idx + 1} / ${IMAGES.length}`;
+        lbOpen.href = name;
+        lb.classList.add("open");
+        if (set_url) setHash(idx);
+        // prevent background scroll
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
+      }
 
-    // Thumbnail clicks
-    document.querySelectorAll('.thumbBtn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const i = parseInt(btn.dataset.idx, 10);
-        show(i);
+      function close() {
+        lb.classList.remove("open");
+        // restore scroll
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+        // remove hash without jumping
+        history.replaceState(null, "", location.pathname + location.search);
+      }
+
+      function next() {
+        show(idx + 1);
+      }
+      function prev() {
+        show(idx - 1);
+      }
+
+      // Thumbnail clicks
+      document.querySelectorAll(".thumbBtn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const i = parseInt(btn.dataset.idx, 10);
+          show(i);
+        });
       });
-    });
 
-    // Controls
-    document.getElementById('lbClose').addEventListener('click', close);
-    document.getElementById('lbNext').addEventListener('click', next);
-    document.getElementById('lbPrev').addEventListener('click', prev);
+      // Controls
+      document.getElementById("lbClose").addEventListener("click", close);
+      document.getElementById("lbNext").addEventListener("click", next);
+      document.getElementById("lbPrev").addEventListener("click", prev);
 
-    // Click outside image closes; click on left/right half of stage navigates
-    document.getElementById('lbStage').addEventListener('click', (e) => {
-      if (e.target === lbImg) return; // clicking the image itself does nothing
-      if (e.target.closest('.lbNav')) return; // nav buttons already handle clicks
-      // If click is near edges, navigate; otherwise close
-      const x = e.clientX;
-      const w = window.innerWidth;
-      if (x < w * 0.33) prev();
-      else if (x > w * 0.67) next();
-      else close();
-    });
+      // Click outside image closes; click on left/right half of stage navigates
+      document.getElementById("lbStage").addEventListener("click", (e) => {
+        if (e.target === lbImg) return; // clicking the image itself does nothing
+        if (e.target.closest(".lbNav")) return; // nav buttons already handle clicks
+        // If click is near edges, navigate; otherwise close
+        const x = e.clientX;
+        const w = window.innerWidth;
+        if (x < w * 0.33) prev();
+        else if (x > w * 0.67) next();
+        else close();
+      });
 
-    // Keyboard navigation
-    window.addEventListener('keydown', (e) => {
-      if (!lb.classList.contains('open')) return;
-      if (e.key === "Escape") close();
-      else if (e.key === "ArrowRight" || e.key === "l" || e.key === "j") next();
-      else if (e.key === "ArrowLeft"  || e.key === "h" || e.key === "k") prev();
-    });
+      // Keyboard navigation
+      window.addEventListener("keydown", (e) => {
+        if (!lb.classList.contains("open")) return;
+        if (e.key === "Escape") close();
+        else if (e.key === "ArrowRight" || e.key === "l" || e.key === "j") next();
+        else if (e.key === "ArrowLeft" || e.key === "h" || e.key === "k") prev();
+      });
 
-    // If someone loads the page with #img=N, open that image
-    const initial = readHash();
-    if (initial !== null && !Number.isNaN(initial)) {
-      show(initial, false);
-      setHash(clampIndex(initial));
-    }
-  </script>
-</body>
+      // If someone loads the page with #img=N, open that image
+      const initial = readHash();
+      if (initial !== null && !Number.isNaN(initial)) {
+        show(initial, false);
+        setHash(clampIndex(initial));
+      }
+    </script>
+  </body>
 </html>
