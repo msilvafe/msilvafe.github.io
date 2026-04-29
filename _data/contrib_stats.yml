@@ -1,14 +1,14 @@
-generated: "2026-04-28"
+generated: "2026-04-29"
 stats:
   simonsobs/sotodlib:
-    prs_opened: 25
+    prs_opened: 36
     issues_opened: 41
-    reviews: 107
+    reviews: 121
   simonsobs/socs:
-    prs_opened: 3
+    prs_opened: 5
     issues_opened: 6
-    reviews: 4
+    reviews: 8
   simonsobs/sodetlib:
-    prs_opened: 3
+    prs_opened: 14
     issues_opened: 13
-    reviews: 19
+    reviews: 45
