@@ -13,7 +13,7 @@ bucket instead of this git repo, so the repo's history doesn't grow with
 binary plot files (git never shrinks; every version of every image would
 stay in history forever).
 
-There's also an older, still-valid path for *small* galleries: dropping
+There's also an older, still-valid path for _small_ galleries: dropping
 images into `assets/private-plots/<name>/` and running
 `build_private_plots.py`, which auto-generates the gallery HTML and
 commits straight into this repo. Use R2 (this doc) once a gallery is more
@@ -38,10 +38,11 @@ regenerates from two sources every run:
 This matters because `assets/private-plots/**` changes deploy via
 `deploy-private-plots.yml`, a plain `rsync` straight to the `gh-pages`
 branch — no Ruby, no Jekyll, no CSS purge, **~1 minute total** (15s rsync
-+ ~25s GitHub Pages redeploy). `_pages/plots.md` changes instead trigger
-the full Jekyll site build (`deploy.yml`), which takes ~5 minutes and is
-excluded from normal push triggers for exactly that reason. Editing
-`plots.md` should be rare; editing `r2_galleries.json` should be the norm.
+
+- ~25s GitHub Pages redeploy). `_pages/plots.md` changes instead trigger
+  the full Jekyll site build (`deploy.yml`), which takes ~5 minutes and is
+  excluded from normal push triggers for exactly that reason. Editing
+  `plots.md` should be rare; editing `r2_galleries.json` should be the norm.
 
 ## Prerequisites
 
@@ -109,7 +110,7 @@ Read & Write on this bucket only** (not full account access).
    JSON array — add yours, keep the rest):
 
    ```json
-   {"name": "<topic>/<gallery-name>", "url": "https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/<topic>/<gallery-name>/index.html"}
+   { "name": "<topic>/<gallery-name>", "url": "https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/<topic>/<gallery-name>/index.html" }
    ```
 
    **Link to `index.html` explicitly** — this is the one gotcha that
@@ -136,6 +137,15 @@ Read & Write on this bucket only** (not full account access).
    for the exact one-liner used to verify this), to keep the commit
    focused on the actual change.
 
+   The generator's raw HTML output doesn't match this repo's Prettier
+   config, so the "Prettier code formatter" CI check will fail on the
+   regenerated `index.html` unless you run it locally first:
+
+   ```bash
+   npm install   # first time only, installs prettier + the liquid plugin
+   npx prettier assets/private-plots/index.html --write
+   ```
+
 7. **Commit and push** — should be just `assets/private-plots/index.html`
    (the hub) and `r2_galleries.json`. Nothing binary, nothing under
    `_pages/`.
@@ -154,7 +164,7 @@ Read & Write on this bucket only** (not full account access).
    curl -s "https://msilvafe-cmb.com/assets/private-plots/" | grep -A 3 "<gallery-name>"
    ```
 
-   If you ever *do* need to touch `_pages/plots.md` itself (rare — it's
+   If you ever _do_ need to touch `_pages/plots.md` itself (rare — it's
    meant to stay static), that still requires a manual full-site deploy:
    `gh workflow run "Deploy site" --repo msilvafe/msilvafe.github.io --ref main`
    (~5 min, `gh run watch <run-id>` to wait for it).
