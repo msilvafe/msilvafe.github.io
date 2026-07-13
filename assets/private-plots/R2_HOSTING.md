@@ -128,13 +128,18 @@ Read & Write on this bucket only** (not full account access).
    on the first rollout — the repo's own "Check for broken links" CI
    caught it.
 
-6. **Re-run the generator** so the hub page picks up the manifest change,
-   then **remove the local gallery copy** — it only needed to exist long
-   enough to upload:
+6. **Remove the local gallery copy**, then **re-run the generator** so the
+   hub page picks up the manifest change. Order matters here: the copy
+   only needed to exist long enough to upload (step 3), and if you
+   regenerate _before_ deleting it, the generator will find it on disk
+   and add it to the hub as a local entry too — giving you a duplicate
+   local-path link sitting right next to the correct R2 link for the
+   same gallery. (This happened for real on the first WR42/Q-vs-f
+   rollout and needed a follow-up fix commit.)
 
    ```bash
-   python3 assets/private-plots/build_private_plots.py
    rm -rf assets/private-plots/<topic>/<gallery-name>
+   python3 assets/private-plots/build_private_plots.py
    git status --short   # confirm nothing else unexpected is staged
    ```
 
