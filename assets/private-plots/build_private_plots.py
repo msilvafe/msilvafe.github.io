@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 from collections import defaultdict
 
 IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp"}
 
-PLOTS_MD_REL = Path("_pages/plots.md")
-START_MARKER = "<!-- PLOTS:START -->"
-END_MARKER = "<!-- PLOTS:END -->"
+R2_GALLERIES_REL = Path("assets/private-plots/r2_galleries.json")
 
 
 def find_repo_root(start: Path) -> Path:
@@ -453,42 +452,33 @@ def render_tree_html(tree: dict, base_url: str, prefix_parts: list[str] | None =
     return "\n".join(html)
 
 
-def update_plots_md(repo_root: Path, private_plots_dir: Path, image_dirs: list[Path]):
-    plots_md = repo_root / PLOTS_MD_REL
-    if not plots_md.exists():
-        raise FileNotFoundError(
-            f"Can't find {plots_md}.\n"
-            f"Create it at {PLOTS_MD_REL} relative to repo root: {repo_root}\n"
-            f"and include the markers:\n  {START_MARKER}\n  {END_MARKER}"
-        )
+def load_r2_galleries(repo_root: Path) -> list[dict]:
+    """Read the manifest of externally-hosted (R2) galleries, if present.
 
-    text = plots_md.read_text(encoding="utf-8")
-    if START_MARKER not in text or END_MARKER not in text:
-        raise ValueError(f"{plots_md} must contain both markers:\n  {START_MARKER}\n  {END_MARKER}")
+    These have no local filesystem trace -- the images live in R2, and the
+    local copies used to upload them are deleted afterward -- so they can't
+    be auto-discovered like local image_dirs. This manifest is the only
+    record of them, and must be kept up to date by hand (or by whatever
+    uploads to R2) whenever a gallery is added or removed.
+    """
+    manifest = repo_root / R2_GALLERIES_REL
+    if not manifest.exists():
+        return []
+    entries = json.loads(manifest.read_text(encoding="utf-8"))
+    return sorted(entries, key=lambda e: natural_sort_key(e["name"]))
 
-    base_url = url_for_dir(private_plots_dir, repo_root)  # e.g. /assets/private-plots/
-    tree = build_tree(private_plots_dir, image_dirs)
-    nested_list = render_tree_html(tree, base_url)
 
-    lines = [
-        START_MARKER,
-        "",
-        '<meta name="robots" content="noindex, nofollow">',
-        "",
-        "## Galleries",
-        "",
-        f'<p><a href="{base_url}">Top-level gallery index</a></p>',
-        "",
-        nested_list,
-        "",
-        END_MARKER,
-    ]
-    new_block = "\n".join(lines)
-
-    pattern = re.compile(re.escape(START_MARKER) + r".*?" + re.escape(END_MARKER), flags=re.DOTALL)
-    new_text = pattern.sub(new_block, text, count=1)
-    if new_text != text:
-        plots_md.write_text(new_text, encoding="utf-8")
+def render_external_galleries_html(entries: list[dict]) -> str:
+    if not entries:
+        return ""
+    items = "\n".join(f'    <li><a href="{e["url"]}">{e["name"]}</a></li>' for e in entries)
+    return f"""
+  <h2>External galleries (Cloudflare R2)</h2>
+  <p class="meta">Hosted outside this repo; listed in {R2_GALLERIES_REL.as_posix()}.</p>
+  <ul>
+{items}
+  </ul>
+"""
 
 
 def main():
@@ -497,8 +487,9 @@ def main():
     repo_root = find_repo_root(private_plots_dir)
 
     image_dirs = find_image_dirs(private_plots_dir)
-    if not image_dirs:
-        print(f"[warn] No images found under {private_plots_dir}. Nothing to do.")
+    r2_entries = load_r2_galleries(repo_root)
+    if not image_dirs and not r2_entries:
+        print(f"[warn] No images found under {private_plots_dir} and no R2 galleries in {R2_GALLERIES_REL}. Nothing to do.")
         return
 
     # Create directory hubs for intermediate directories that don't contain images
@@ -540,9 +531,17 @@ def main():
         write_directory_hub_index(d, title=title, back_href=back_href, child_dirs=child_dirs)
         print(f"[ok] Wrote {d / 'index.html'} (hub with {len(child_dirs)} link(s))")
 
-    # Write a top-level link hub index.html that lists all galleries
+    # Write a top-level link hub index.html that lists all galleries --
+    # local (in-repo) and external (R2). This file lives under
+    # assets/private-plots/, so pushing it goes through the fast
+    # deploy-private-plots.yml rsync path (~1 min end to end) instead of
+    # the full Jekyll site build (~5 min) that _pages/plots.md would
+    # trigger -- see R2_HOSTING.md. _pages/plots.md is a static page that
+    # just links here and does not need to be regenerated when galleries
+    # change.
     tree = build_tree(private_plots_dir, image_dirs)
     nested_list = render_tree_html(tree, base_url)
+    external_html = render_external_galleries_html(r2_entries)
 
     hub = f"""<!doctype html>
 <html lang="en">
@@ -566,6 +565,7 @@ def main():
   <h1>Private plots</h1>
   <h2>Galleries</h2>
   {nested_list}
+  {external_html}
 </body>
 </html>
 """
@@ -575,13 +575,13 @@ def main():
     write_private_plots_404(private_plots_dir)
     print(f"[ok] Wrote {private_plots_dir / '404.html'}")
 
-    # Update _pages/plots.md
-    update_plots_md(repo_root, private_plots_dir, image_dirs)
-    print(f"[ok] Updated {repo_root / PLOTS_MD_REL}")
+    if r2_entries:
+        print(f"[ok] Included {len(r2_entries)} external (R2) gallery link(s) from {R2_GALLERIES_REL}")
 
-    print("\nNext:")
-    print("  git add assets/private-plots/**/index.html _pages/plots.md")
-    print('  git commit -m "Auto-build private plots galleries" && git push')
+    print("\nNext (fast path -- no full site rebuild needed):")
+    print("  git add assets/private-plots/")
+    print('  git commit -m "Update private plots galleries" && git push')
+    print("  (deploy-private-plots.yml picks this up automatically, ~1 min)")
 
 
 if __name__ == "__main__":
