@@ -579,6 +579,7 @@ def main():
         print(f"[ok] Included {len(r2_entries)} external (R2) gallery link(s) from {R2_GALLERIES_REL}")
 
     print("\nNext (fast path -- no full site rebuild needed):")
+    print("  npx prettier assets/private-plots/index.html --write  # avoids a Prettier CI failure")
     print("  git add assets/private-plots/")
     print('  git commit -m "Update private plots galleries" && git push')
     print("  (deploy-private-plots.yml picks this up automatically, ~1 min)")
