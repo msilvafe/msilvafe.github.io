@@ -34,6 +34,6 @@ sitemap: false
 Hosted outside this repo to avoid growing it with binary plot history. Uploaded/managed via `assets/private-plots/upload_to_r2.py`.
 
 <ul>
-  <li><a href="https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/hfss_sims/wr10_calibration/">hfss_sims/wr10_calibration</a></li>
-  <li><a href="https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/hfss_sims/wr28_filter/">hfss_sims/wr28_filter</a></li>
+  <li><a href="https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/hfss_sims/wr10_calibration/index.html">hfss_sims/wr10_calibration</a></li>
+  <li><a href="https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/hfss_sims/wr28_filter/index.html">hfss_sims/wr28_filter</a></li>
 </ul>
