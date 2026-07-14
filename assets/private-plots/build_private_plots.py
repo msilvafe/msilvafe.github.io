@@ -510,8 +510,16 @@ def main():
     # We'll make it a link hub, not a gallery, because images are in subdirs.
     base_url = url_for_dir(private_plots_dir, repo_root)
 
-    # Create/overwrite index.html in every dir that contains images
+    # Create/overwrite index.html in every dir that contains images, unless it
+    # opts out via a ".manual_index" marker file -- used for hand-written
+    # article/report pages that live alongside their own images (e.g. a
+    # literature-review writeup) rather than a generic auto-generated
+    # thumbnail grid. Without this, re-running this script clobbers any
+    # hand-crafted index.html the moment images are dropped in next to it.
     for d in image_dirs:
+        if (d / ".manual_index").exists():
+            print(f"[skip] {d / 'index.html'} is hand-written (.manual_index present), not regenerating")
+            continue
         # Back link: if nested, go up one level; if top-level, go to /plots/
         if d == private_plots_dir:
             back_href = None
@@ -525,6 +533,9 @@ def main():
 
     # Create/overwrite index.html for directory hubs with links to child galleries/hubs
     for d in hub_dirs:
+        if (d / ".manual_index").exists():
+            print(f"[skip] {d / 'index.html'} is hand-written (.manual_index present), not regenerating")
+            continue
         child_dirs = sorted([child.name for child in relevant_dirs if child.parent == d], key=natural_sort_key)
         title = " / ".join(d.relative_to(private_plots_dir).parts)
         back_href = None
