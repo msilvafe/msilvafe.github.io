@@ -45,11 +45,21 @@ def main():
         rel = f.relative_to(local_dir).as_posix()
         key = f"{key_prefix}/{rel}"
         content_type = mimetypes.guess_type(f.name)[0] or "application/octet-stream"
+        # HTML (gallery index/hub pages) gets a short cache lifetime since it's
+        # re-published in place under the same URL every time a gallery is
+        # updated -- a long cache here means visitors (and Cloudflare's edge)
+        # keep serving a stale listing. Images get a much shorter cache too
+        # (not the previous 1-year default) since filenames can be reused
+        # across re-publishes of the same topic dir.
+        if content_type == "text/html":
+            cache_control = "public, max-age=60, must-revalidate"
+        else:
+            cache_control = "public, max-age=3600"
         s3.upload_file(
             str(f), bucket, key,
-            ExtraArgs={"ContentType": content_type, "CacheControl": "public, max-age=31536000"},
+            ExtraArgs={"ContentType": content_type, "CacheControl": cache_control},
         )
-        print(f"uploaded: {key} ({content_type})")
+        print(f"uploaded: {key} ({content_type}, cache={cache_control})")
 
     print(f"\nDone. {len(files)} file(s) uploaded to bucket '{bucket}' under prefix '{key_prefix}/'.")
 
