@@ -26,5 +26,9 @@
   {
     "name": "hfss_sims/q_vs_f",
     "url": "https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/hfss_sims/q_vs_f/index.html"
+  },
+  {
+    "name": "axion_bolometry/wg_to_tes_EW",
+    "url": "https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/axion_bolometry/wg_to_tes_EW/index.html"
   }
 ]
