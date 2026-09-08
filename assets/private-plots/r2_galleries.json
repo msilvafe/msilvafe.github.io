@@ -30,5 +30,9 @@
   {
     "name": "axion_bolometry/wg_to_tes_EW",
     "url": "https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/axion_bolometry/wg_to_tes_EW/index.html"
+  },
+  {
+    "name": "vna_frequency_extender/coax_gcpwg_launch",
+    "url": "https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/vna_frequency_extender/coax_gcpwg_launch/index.html"
   }
 ]
