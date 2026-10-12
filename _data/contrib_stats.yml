@@ -1,11 +1,11 @@
-generated: "2026-10-11"
+generated: "2026-10-12"
 stats:
   simonsobs/sotodlib:
     prs_opened: 58
     issues_opened: 41
     reviews: 197
   simonsobs/socs:
-    prs_opened: 6
+    prs_opened: 7
     issues_opened: 6
     reviews: 10
   simonsobs/sodetlib:
