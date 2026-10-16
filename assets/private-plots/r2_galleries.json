@@ -42,5 +42,9 @@
   {
     "name": "hfss_sims/lope_tes_match_wr42",
     "url": "https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/hfss_sims/lope_tes_match_wr42/index.html"
+  },
+  {
+    "name": "hfss_sims/lope_probe_tes_wr42",
+    "url": "https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/hfss_sims/lope_probe_tes_wr42/index.html"
   }
 ]
