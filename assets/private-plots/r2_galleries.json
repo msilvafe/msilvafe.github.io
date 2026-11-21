@@ -46,5 +46,13 @@
   {
     "name": "hfss_sims/lope_probe_tes_wr42",
     "url": "https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/hfss_sims/lope_probe_tes_wr42/index.html"
+  },
+  {
+    "name": "hfss_sims/alpha_scaling_study",
+    "url": "https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/hfss_sims/alpha_scaling_study/index.html"
+  },
+  {
+    "name": "hfss_sims/lope_followup_2026-11-21",
+    "url": "https://pub-9a2228fc2c10456ba1753e60a6b9a06d.r2.dev/hfss_sims/lope_followup_2026-11-21/index.html"
   }
 ]
